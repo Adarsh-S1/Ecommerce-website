@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Shirt Soft Cotton",
+    "brand": "Uniqlo",
+    "price": 45.00,
+    "originalPrice": null,
+    "image": "assets/shirt1.jpg",
+    "badge": "New Arrival",
+    "itemsLeft": 12,
+    "colors": ["#f5f5f5", "#808080"],
+    "sizes": ["S", "M", "L", "XL"],
+    "category": "shirts",
+    "description": "Comfortable soft cotton shirt perfect for everyday wear"
+  },
+  {
+    "id": 2,
+    "name": "Zip Up Neck Shirt",
+    "brand": "Uniqlo",
+    "price": 60.00,
+    "originalPrice": 80.00,
+    "image": "assets/shirt2.jpg",
+    "badge": "New Arrival",
+    "itemsLeft": 8,
+    "colors": ["#808080", "#000000"],
+    "sizes": ["M", "L", "XL"],
+    "category": "shirts",
+    "description": "Modern zip-up design with premium fabric"
+  },
+  {
+    "id": 3,
+    "name": "Classic Long Sleeve",
+    "brand": "Uniqlo",
+    "price": 40.00,
+    "originalPrice": 65.00,
+    "image": "assets/shirt3.jpg",
+    "badge": "New Arrival",
+    "itemsLeft": 15,
+    "colors": ["#d3d3d3", "#ffffff"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "category": "shirts",
+    "description": "Classic design that never goes out of style"
+  },
+  {
+    "id": 4,
+    "name": "Premium Polo Shirt",
+    "brand": "Nike",
+    "price": 55.00,
+    "originalPrice": null,
+    "image": "assets/polo1.jpg",
+    "badge": null,
+    "itemsLeft": 20,
+    "colors": ["#4169e1", "#000000", "#ffffff"],
+    "sizes": ["S", "M", "L", "XL"],
+    "category": "polo",
+    "description": "Athletic fit polo with moisture-wicking technology"
+  },
+  {
+    "id": 5,
+    "name": "Casual Hoodie",
+    "brand": "Adidas",
+    "price": 85.00,
+    "originalPrice": null,
+    "image": "assets/hoodie1.jpg",
+    "badge": "Best Seller",
+    "itemsLeft": 5,
+    "colors": ["#808080", "#000000"],
+    "sizes": ["M", "L", "XL", "XXL"],
+    "category": "hoodies",
+    "description": "Warm and comfortable hoodie for casual wear"
+  }
+]
