@@ -511,7 +511,7 @@
             <div class="header-actions">
                 <button class="icon-btn">🛒</button>
                 <button class="icon-btn" style="color: #ff4757;">❤️</button>
-                <div class="user-profile">
+                <div class="user-profile" onclick="window.location.href='profile.html'" style="cursor: pointer;">
                     <span style="font-weight: 500;">Ryman Alex</span>
                     <div class="user-avatar">RA</div>
                 </div>
@@ -550,9 +550,8 @@
                     </div>
 
                     <div class="hero-image">
-                        <div class="headphone-display">
-                            <!-- Image placeholder for headphones -->
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 100px;">🎧</div>
+                        <div class="headphone-display" style="background: transparent; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop" alt="Premium Wireless Headphones" style="width: 320px; height: 320px; object-fit: contain; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));">
                         </div>
                     </div>
                 </section>
@@ -565,18 +564,18 @@
                         <h3>More Products</h3>
                         <p class="items-count">460 plus items.</p>
                         <div class="product-thumbnails">
-                            <div class="thumbnail" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-                            <div class="thumbnail" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-                            <div class="thumbnail" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                            <div class="thumbnail" style="background: url('https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=100&h=100&fit=crop') center/cover;"></div>
+                            <div class="thumbnail" style="background: url('https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=100&h=100&fit=crop') center/cover;"></div>
+                            <div class="thumbnail" style="background: url('https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=100&h=100&fit=crop') center/cover;"></div>
                         </div>
                     </div>
 
                     <!-- Downloads Card -->
                     <div class="downloads-card">
                         <div class="avatar-group">
-                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; margin-right: -10px;"></div>
-                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 50%; margin-right: -10px;"></div>
-                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 50%;"></div>
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" style="width: 50px; height: 50px; border-radius: 50%; margin-right: -10px; border: 3px solid white; object-fit: cover;" alt="User">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=50&h=50&fit=crop&crop=face" style="width: 50px; height: 50px; border-radius: 50%; margin-right: -10px; border: 3px solid white; object-fit: cover;" alt="User">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&h=50&fit=crop&crop=face" style="width: 50px; height: 50px; border-radius: 50%; border: 3px solid white; object-fit: cover;" alt="User">
                         </div>
                         <div class="downloads-count">5m+</div>
                         <p class="downloads-text">Downloads</p>
@@ -593,8 +592,8 @@
                             ❤️ Popular
                         </div>
                         <h3>Listening Has Been Released</h3>
-                        <div class="product-image" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
-                            <div style="font-size: 80px;">🎧</div>
+                        <div class="product-image" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=300&h=250&fit=crop" alt="Premium Headphones" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="product-rating">
                             <span>⭐</span>
@@ -623,8 +622,8 @@
                 <div class="product-card">
                     <span class="arrow-link">↗️</span>
                     <h3>New Gen X-Bud</h3>
-                    <div class="product-image" style="background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);">
-                        <div style="font-size: 60px;">🎵</div>
+                    <div class="product-image" style="background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%); overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=250&fit=crop" alt="Wireless Earbuds" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <p class="product-description">Next-generation wireless earbuds with adaptive sound technology. Enjoy 24-hour battery life and seamless connectivity across all your devices.</p>
                 </div>
@@ -634,8 +633,8 @@
                     <span class="arrow-link">↗️</span>
                     <h3>Light Grey Surface Headphone</h3>
                     <p class="product-description" style="margin-top: 15px; margin-bottom: 15px;">Boosted with bass</p>
-                    <div class="product-image" style="background: linear-gradient(135deg, #dfe6e9 0%, #b2bec3 100%);">
-                        <div style="font-size: 80px;">🥽</div>
+                    <div class="product-image" style="background: linear-gradient(135deg, #dfe6e9 0%, #b2bec3 100%); overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&h=250&fit=crop" alt="Surface Headphones" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <p class="product-description">Premium over-ear headphones with enhanced bass response and ergonomic design. Studio-quality sound for professionals and enthusiasts alike.</p>
                 </div>
@@ -643,7 +642,648 @@
         </div>
     </div>
 
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-header">
+            <h3>🛒 Shopping Cart</h3>
+            <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop" alt="Headphones" class="cart-item-img">
+                <div class="cart-item-info">
+                    <h4>Premium Wireless Headphones</h4>
+                    <p class="cart-item-price">$299.00</p>
+                    <div class="cart-qty">
+                        <button onclick="updateQty(1, -1)">-</button>
+                        <span id="qty1">1</span>
+                        <button onclick="updateQty(1, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=100&h=100&fit=crop" alt="Earbuds" class="cart-item-img">
+                <div class="cart-item-info">
+                    <h4>X-Bud Pro Earbuds</h4>
+                    <p class="cart-item-price">$149.00</p>
+                    <div class="cart-qty">
+                        <button onclick="updateQty(2, -1)">-</button>
+                        <span id="qty2">2</span>
+                        <button onclick="updateQty(2, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$597.00</span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" onclick="closeModal()">Continue Shopping</button>
+            <button class="btn-primary" onclick="checkout()">Checkout →</button>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div class="modal" id="favoritesModal">
+        <div class="modal-header">
+            <h3>❤️ My Wishlist</h3>
+            <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="wishlist-grid">
+                <div class="wishlist-item">
+                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=200&h=200&fit=crop" alt="Studio Headphones">
+                    <div class="wishlist-info">
+                        <h4>Studio Monitor Headphones</h4>
+                        <p>$399.00</p>
+                    </div>
+                    <button class="wishlist-remove" onclick="removeFromWishlist(this)">🗑️</button>
+                </div>
+                <div class="wishlist-item">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=200&h=200&fit=crop" alt="Wireless Earbuds">
+                    <div class="wishlist-info">
+                        <h4>Wireless Sport Earbuds</h4>
+                        <p>$179.00</p>
+                    </div>
+                    <button class="wishlist-remove" onclick="removeFromWishlist(this)">🗑️</button>
+                </div>
+                <div class="wishlist-item">
+                    <img src="https://images.unsplash.com/photo-1558756520-22cfe5d382ca?w=200&h=200&fit=crop" alt="Portable Speaker">
+                    <div class="wishlist-info">
+                        <h4>Portable Bluetooth Speaker</h4>
+                        <p>$129.00</p>
+                    </div>
+                    <button class="wishlist-remove" onclick="removeFromWishlist(this)">🗑️</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-primary" onclick="window.location.href='products.html'">Browse More Products</button>
+        </div>
+    </div>
+
+    <!-- Quick View Product Modal -->
+    <div class="modal modal-lg" id="quickViewModal">
+        <div class="modal-header">
+            <h3>🎧 Quick View</h3>
+            <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="quick-view-content">
+                <div class="quick-view-image">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop" alt="Product" id="quickViewImg">
+                </div>
+                <div class="quick-view-info">
+                    <span class="product-badge-sm">New Arrival</span>
+                    <h2 id="quickViewTitle">Premium Wireless Headphones</h2>
+                    <div class="quick-view-rating">
+                        <span class="stars">★★★★★</span>
+                        <span>4.8 (256 reviews)</span>
+                    </div>
+                    <p class="quick-view-price">$299.00 <span class="original">$399.00</span></p>
+                    <p class="quick-view-desc" id="quickViewDesc">Experience exceptional sound quality with active noise cancellation and 30-hour battery life. Premium comfort for all-day listening.</p>
+                    <div class="quick-view-colors">
+                        <span>Colors:</span>
+                        <div class="color-dots">
+                            <span class="color-dot" style="background: #1a1a1a;"></span>
+                            <span class="color-dot" style="background: #c0c0c0;"></span>
+                            <span class="color-dot" style="background: #4a90e2;"></span>
+                            <span class="color-dot" style="background: #e74c3c;"></span>
+                        </div>
+                    </div>
+                    <div class="quick-view-actions">
+                        <button class="btn-primary" onclick="addToCartFromQuickView()">Add to Cart</button>
+                        <button class="btn-secondary" onclick="window.location.href='product-detail.html'">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- More Products Modal -->
+    <div class="modal modal-lg" id="moreProductsModal">
+        <div class="modal-header">
+            <h3>🎵 More Products</h3>
+            <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="products-modal-grid">
+                <div class="product-modal-card" onclick="openQuickView('Over-Ear Headphones', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop', 'Premium sound with deep bass and crystal-clear highs.')">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=250&h=250&fit=crop" alt="Headphones">
+                    <h4>Over-Ear Headphones</h4>
+                    <p>$299.00</p>
+                </div>
+                <div class="product-modal-card" onclick="openQuickView('Wireless Earbuds', 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop', 'Compact earbuds with premium sound quality.')">
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=250&h=250&fit=crop" alt="Earbuds">
+                    <h4>Wireless Earbuds</h4>
+                    <p>$149.00</p>
+                </div>
+                <div class="product-modal-card" onclick="openQuickView('Bluetooth Speaker', 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop', 'Powerful portable speaker with 360° sound.')">
+                    <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=250&h=250&fit=crop" alt="Speaker">
+                    <h4>Bluetooth Speaker</h4>
+                    <p>$199.00</p>
+                </div>
+                <div class="product-modal-card" onclick="openQuickView('Studio Monitors', 'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=400&h=400&fit=crop', 'Professional-grade studio monitor headphones.')">
+                    <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=250&h=250&fit=crop" alt="Monitors">
+                    <h4>Studio Monitors</h4>
+                    <p>$449.00</p>
+                </div>
+                <div class="product-modal-card" onclick="openQuickView('Gaming Headset', 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400&h=400&fit=crop', 'Immersive gaming audio with surround sound.')">
+                    <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=250&h=250&fit=crop" alt="Gaming">
+                    <h4>Gaming Headset</h4>
+                    <p>$179.00</p>
+                </div>
+                <div class="product-modal-card" onclick="openQuickView('Noise Cancelling', 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400&h=400&fit=crop', 'Advanced ANC technology for pure listening.')">
+                    <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=250&h=250&fit=crop" alt="ANC">
+                    <h4>Noise Cancelling</h4>
+                    <p>$349.00</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-primary" onclick="window.location.href='products.html'">View All 460+ Products →</button>
+        </div>
+    </div>
+
+    <!-- Search Results Modal -->
+    <div class="modal" id="searchModal">
+        <div class="modal-header">
+            <h3>🔍 Search Results</h3>
+            <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <p id="searchQuery" style="color: #666; margin-bottom: 20px;">Results for: ""</p>
+            <div class="search-results">
+                <div class="search-result-item" onclick="window.location.href='product-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=80&h=80&fit=crop" alt="Result">
+                    <div>
+                        <h4>Premium Wireless Headphones</h4>
+                        <p>$299.00 - In Stock</p>
+                    </div>
+                </div>
+                <div class="search-result-item" onclick="window.location.href='product-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=80&h=80&fit=crop" alt="Result">
+                    <div>
+                        <h4>X-Bud Pro Wireless Earbuds</h4>
+                        <p>$149.00 - In Stock</p>
+                    </div>
+                </div>
+                <div class="search-result-item" onclick="window.location.href='product-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=80&h=80&fit=crop" alt="Result">
+                    <div>
+                        <h4>Portable Bluetooth Speaker</h4>
+                        <p>$199.00 - In Stock</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-primary" onclick="window.location.href='products.html'">See All Results</button>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal.modal-lg {
+            max-width: 800px;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            width: 35px;
+            height: 35px;
+            border: none;
+            background: #f5f5f5;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #e0e0e0;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 25px 30px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            padding: 20px 30px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+
+        .btn-primary {
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            padding: 12px 25px;
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+        }
+
+        /* Cart Items */
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #4a90e2;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .cart-qty {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-qty button {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .cart-qty button:hover {
+            background: #f5f5f5;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* Wishlist */
+        .wishlist-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .wishlist-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            align-items: center;
+        }
+
+        .wishlist-item img {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .wishlist-info {
+            flex: 1;
+        }
+
+        .wishlist-info h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .wishlist-info p {
+            color: #4a90e2;
+            font-weight: 600;
+        }
+
+        .wishlist-remove {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+
+        .wishlist-remove:hover {
+            opacity: 1;
+        }
+
+        /* Quick View */
+        .quick-view-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .quick-view-image img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .product-badge-sm {
+            display: inline-block;
+            background: #d4ff00;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .quick-view-info h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .quick-view-rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .quick-view-rating .stars {
+            color: #ffc107;
+        }
+
+        .quick-view-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .quick-view-price .original {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .quick-view-desc {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .quick-view-colors {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .color-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .color-dot {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .color-dot:hover {
+            transform: scale(1.2);
+        }
+
+        .quick-view-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Products Modal Grid */
+        .products-modal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product-modal-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .product-modal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-modal-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .product-modal-card h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .product-modal-card p {
+            color: #4a90e2;
+            font-weight: 600;
+        }
+
+        /* Search Results */
+        .search-results {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-result-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: #eee;
+        }
+
+        .search-result-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .search-result-item h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .search-result-item p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .quick-view-content {
+                grid-template-columns: 1fr;
+            }
+
+            .products-modal-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+
     <script>
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById('modalOverlay').classList.add('active');
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = '';
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
         // Theme color changer
         function changeTheme(color) {
             document.querySelectorAll('.headphone-display, .thumbnail:first-child, .avatar-group div:first-child').forEach(el => {
@@ -651,22 +1291,76 @@
             });
         }
 
+        // Cart functionality
+        let quantities = { 1: 1, 2: 2 };
+        const prices = { 1: 299, 2: 149 };
+
+        function updateQty(id, change) {
+            quantities[id] = Math.max(0, quantities[id] + change);
+            document.getElementById('qty' + id).textContent = quantities[id];
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const total = (quantities[1] * prices[1]) + (quantities[2] * prices[2]);
+            document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+        }
+
+        function checkout() {
+            alert('Proceeding to checkout... Total: ' + document.getElementById('cartTotal').textContent);
+            closeModal();
+        }
+
+        // Wishlist
+        function removeFromWishlist(btn) {
+            btn.closest('.wishlist-item').style.animation = 'fadeOut 0.3s';
+            setTimeout(() => btn.closest('.wishlist-item').remove(), 300);
+        }
+
+        // Quick View
+        function openQuickView(title, imgSrc, desc) {
+            document.getElementById('quickViewTitle').textContent = title;
+            document.getElementById('quickViewImg').src = imgSrc;
+            document.getElementById('quickViewDesc').textContent = desc;
+            closeModal();
+            setTimeout(() => openModal('quickViewModal'), 100);
+        }
+
+        function addToCartFromQuickView() {
+            alert('Added to cart: ' + document.getElementById('quickViewTitle').textContent);
+            closeModal();
+        }
+
         // Search functionality
         document.querySelector('.search-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                alert('Searching for: ' + this.value);
+            if (e.key === 'Enter' && this.value.trim()) {
+                document.getElementById('searchQuery').textContent = 'Results for: "' + this.value + '"';
+                openModal('searchModal');
             }
         });
 
         document.querySelector('.search-btn').addEventListener('click', function() {
             const searchValue = document.querySelector('.search-input').value;
-            if (searchValue) {
-                alert('Searching for: ' + searchValue);
+            if (searchValue.trim()) {
+                document.getElementById('searchQuery').textContent = 'Results for: "' + searchValue + '"';
+                openModal('searchModal');
             }
         });
 
+        // Cart button
+        document.querySelector('.icon-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            openModal('cartModal');
+        });
+
+        // Favorites button
+        document.querySelectorAll('.icon-btn')[1].addEventListener('click', function(e) {
+            e.stopPropagation();
+            openModal('favoritesModal');
+        });
+
         // Product card interactions
-        document.querySelectorAll('.product-card, .featured-product, .more-products').forEach(card => {
+        document.querySelectorAll('.product-card, .featured-product').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-5px)';
                 this.style.transition = 'transform 0.3s ease';
@@ -676,8 +1370,16 @@
             });
         });
 
+        // More Products card
+        document.querySelector('.more-products').addEventListener('click', function(e) {
+            if (!e.target.classList.contains('heart-icon')) {
+                openModal('moreProductsModal');
+            }
+        });
+        document.querySelector('.more-products').style.cursor = 'pointer';
+
         // Heart icon toggle
-        document.querySelectorAll('.heart-icon, .icon-btn').forEach(icon => {
+        document.querySelectorAll('.heart-icon').forEach(icon => {
             icon.addEventListener('click', function(e) {
                 e.stopPropagation();
                 this.style.transform = 'scale(1.3)';
@@ -687,11 +1389,18 @@
             });
         });
 
-        // Arrow link clicks
-        document.querySelectorAll('.arrow-link').forEach(arrow => {
+        // Arrow link clicks - open quick view
+        const productData = [
+            { title: 'New Gen X-Bud', img: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop', desc: 'Next-generation wireless earbuds with adaptive sound technology. Enjoy 24-hour battery life.' },
+            { title: 'Light Grey Surface Headphone', img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop', desc: 'Premium over-ear headphones with enhanced bass response and ergonomic design.' },
+            { title: 'Listening Has Been Released', img: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400&h=400&fit=crop', desc: 'Experience premium audio quality with active noise cancellation.' }
+        ];
+
+        document.querySelectorAll('.arrow-link').forEach((arrow, index) => {
             arrow.addEventListener('click', function(e) {
                 e.stopPropagation();
-                alert('Opening product details...');
+                const data = productData[index] || productData[0];
+                openQuickView(data.title, data.img, data.desc);
             });
         });
     </script>

@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Nitec</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 15px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            background: #f5f5f5;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Profile Layout */
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+        }
+
+        /* Sidebar */
+        .profile-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            height: fit-content;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .profile-avatar-section {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 25px;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 48px;
+            color: white;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-edit {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .profile-avatar:hover .avatar-edit {
+            opacity: 1;
+        }
+
+        .profile-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-email {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .profile-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(135deg, #ffd700 0%, #ff9500 100%);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Sidebar Menu */
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-menu a:hover {
+            background: #f5f5f5;
+        }
+
+        .sidebar-menu a.active {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .sidebar-menu .menu-icon {
+            font-size: 18px;
+        }
+
+        .menu-badge {
+            margin-left: auto;
+            background: #ff4757;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .card-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .card-header-link {
+            color: #00bcd4;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .card-header-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* Personal Info */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* Recent Orders */
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .order-item:hover {
+            background: #eee;
+            transform: translateX(5px);
+        }
+
+        .order-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .order-info {
+            flex: 1;
+        }
+
+        .order-id {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .order-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .order-date {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .order-status {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-delivered {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-shipped {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .status-processing {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .order-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        /* Saved Items */
+        .saved-items-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .saved-item {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .saved-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .saved-item-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .saved-item-info {
+            padding: 15px;
+        }
+
+        .saved-item-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .saved-item-price {
+            color: #00bcd4;
+            font-weight: 700;
+        }
+
+        /* Addresses */
+        .address-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .address-card {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .address-card.default {
+            border: 2px solid #00bcd4;
+        }
+
+        .default-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #00bcd4;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .address-type {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .address-text {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .address-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .address-action {
+            font-size: 13px;
+            color: #00bcd4;
+            cursor: pointer;
+        }
+
+        .address-action:hover {
+            text-decoration: underline;
+        }
+
+        /* Add Button */
+        .add-card {
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px dashed #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .add-card:hover {
+            border-color: #00bcd4;
+            background: #f0f9fa;
+        }
+
+        .add-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #999;
+        }
+
+        .add-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Payment Methods */
+        .payment-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 40px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .payment-info {
+            flex: 1;
+        }
+
+        .payment-type {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .payment-number {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .payment-expiry {
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            padding: 12px 25px;
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+        }
+
+        .btn-danger {
+            padding: 12px 25px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-danger:hover {
+            background: #e84050;
+        }
+
+        /* Settings */
+        .settings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .setting-info h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .setting-info p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 26px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #00bcd4;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .profile-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-sidebar {
+                order: -1;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-grid,
+            .address-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .saved-items-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px;
+            }
+
+            .header-container {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .saved-items-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-item {
+                flex-wrap: wrap;
+            }
+
+            .order-price {
+                width: 100%;
+                text-align: right;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span style="font-size: 32px;">N</span>
+                <span>nitec.</span>
+            </a>
+
+            <div class="header-actions">
+                <button class="icon-btn" onclick="window.location.href='index.html'">
+                    🏠
+                </button>
+                <button class="icon-btn">
+                    🛒
+                    <span class="badge">2</span>
+                </button>
+                <button class="icon-btn" style="color: #ff4757;">❤️</button>
+                <div style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <span style="font-weight: 500;">Ryman Alex</span>
+                    <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">RA</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <span>My Profile</span>
+        </div>
+
+        <div class="profile-layout">
+            <!-- Sidebar -->
+            <aside class="profile-sidebar">
+                <div class="profile-avatar-section">
+                    <div class="profile-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="Profile">
+                        <div class="avatar-edit">📷 Change</div>
+                    </div>
+                    <h2 class="profile-name">Ryman Alex</h2>
+                    <p class="profile-email">ryman.alex@email.com</p>
+                    <div class="profile-badge">
+                        <span>👑</span>
+                        <span>Gold Member</span>
+                    </div>
+                </div>
+
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#overview" class="active" onclick="showSection('overview')">
+                            <span class="menu-icon">📊</span>
+                            <span>Overview</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#orders" onclick="showSection('orders')">
+                            <span class="menu-icon">📦</span>
+                            <span>My Orders</span>
+                            <span class="menu-badge">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#wishlist" onclick="showSection('wishlist')">
+                            <span class="menu-icon">❤️</span>
+                            <span>Wishlist</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#addresses" onclick="showSection('addresses')">
+                            <span class="menu-icon">📍</span>
+                            <span>Addresses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#payments" onclick="showSection('payments')">
+                            <span class="menu-icon">💳</span>
+                            <span>Payment Methods</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings" onclick="showSection('settings')">
+                            <span class="menu-icon">⚙️</span>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="logout()" style="color: #ff4757;">
+                            <span class="menu-icon">🚪</span>
+                            <span>Sign Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="profile-content">
+                <!-- Overview Section -->
+                <section id="overview" class="profile-section">
+                    <!-- Stats -->
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>Dashboard Overview</h2>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">📦</div>
+                                <div class="stat-value">12</div>
+                                <div class="stat-label">Total Orders</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">❤️</div>
+                                <div class="stat-value">8</div>
+                                <div class="stat-label">Wishlist Items</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">⭐</div>
+                                <div class="stat-value">1,250</div>
+                                <div class="stat-label">Reward Points</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🎁</div>
+                                <div class="stat-value">3</div>
+                                <div class="stat-label">Active Coupons</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Info -->
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>Personal Information</h2>
+                            <a href="#" class="card-header-link" onclick="editProfile()">Edit Profile</a>
+                        </div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Full Name</div>
+                                <div class="info-value">Ryman Alex</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Email Address</div>
+                                <div class="info-value">ryman.alex@email.com</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Phone Number</div>
+                                <div class="info-value">+1 (555) 123-4567</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Date of Birth</div>
+                                <div class="info-value">March 15, 1992</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Member Since</div>
+                                <div class="info-value">January 2024</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Membership Tier</div>
+                                <div class="info-value">Gold Member 👑</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Orders -->
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>Recent Orders</h2>
+                            <a href="#orders" class="card-header-link" onclick="showSection('orders')">View All</a>
+                        </div>
+                        <div class="orders-list">
+                            <div class="order-item" onclick="viewOrder('ORD-2024-001')">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop" alt="Product" class="order-image">
+                                <div class="order-info">
+                                    <div class="order-id">#ORD-2024-001</div>
+                                    <div class="order-name">Premium Wireless Headphones</div>
+                                    <div class="order-date">Ordered on Jan 10, 2024</div>
+                                </div>
+                                <span class="order-status status-delivered">Delivered</span>
+                                <div class="order-price">$299.00</div>
+                            </div>
+                            <div class="order-item" onclick="viewOrder('ORD-2024-002')">
+                                <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=100&h=100&fit=crop" alt="Product" class="order-image">
+                                <div class="order-info">
+                                    <div class="order-id">#ORD-2024-002</div>
+                                    <div class="order-name">X-Bud Pro Wireless Earbuds</div>
+                                    <div class="order-date">Ordered on Jan 12, 2024</div>
+                                </div>
+                                <span class="order-status status-shipped">Shipped</span>
+                                <div class="order-price">$149.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Orders Section -->
+                <section id="orders" class="profile-section" style="display: none;">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>My Orders</h2>
+                        </div>
+                        <div class="orders-list">
+                            <div class="order-item" onclick="viewOrder('ORD-2024-001')">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop" alt="Product" class="order-image">
+                                <div class="order-info">
+                                    <div class="order-id">#ORD-2024-001</div>
+                                    <div class="order-name">Premium Wireless Headphones</div>
+                                    <div class="order-date">Ordered on Jan 10, 2024</div>
+                                </div>
+                                <span class="order-status status-delivered">Delivered</span>
+                                <div class="order-price">$299.00</div>
+                            </div>
+                            <div class="order-item" onclick="viewOrder('ORD-2024-002')">
+                                <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=100&h=100&fit=crop" alt="Product" class="order-image">
+                                <div class="order-info">
+                                    <div class="order-id">#ORD-2024-002</div>
+                                    <div class="order-name">X-Bud Pro Wireless Earbuds</div>
+                                    <div class="order-date">Ordered on Jan 12, 2024</div>
+                                </div>
+                                <span class="order-status status-shipped">Shipped</span>
+                                <div class="order-price">$149.00</div>
+                            </div>
+                            <div class="order-item" onclick="viewOrder('ORD-2024-003')">
+                                <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=100&h=100&fit=crop" alt="Product" class="order-image">
+                                <div class="order-info">
+                                    <div class="order-id">#ORD-2024-003</div>
+                                    <div class="order-name">Bluetooth Portable Speaker</div>
+                                    <div class="order-date">Ordered on Jan 14, 2024</div>
+                                </div>
+                                <span class="order-status status-processing">Processing</span>
+                                <div class="order-price">$199.00</div>
+                            </div>
+                            <div class="order-item" onclick="viewOrder('ORD-2023-089')">
+                                <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=100&h=100&fit=crop" alt="Product" class="order-image">
+                                <div class="order-info">
+                                    <div class="order-id">#ORD-2023-089</div>
+                                    <div class="order-name">Studio Monitor Headphones</div>
+                                    <div class="order-date">Ordered on Dec 20, 2023</div>
+                                </div>
+                                <span class="order-status status-delivered">Delivered</span>
+                                <div class="order-price">$399.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Wishlist Section -->
+                <section id="wishlist" class="profile-section" style="display: none;">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>My Wishlist</h2>
+                            <a href="products.html" class="card-header-link">Browse Products</a>
+                        </div>
+                        <div class="saved-items-grid">
+                            <div class="saved-item" onclick="window.location.href='product-detail.html'">
+                                <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=300&h=200&fit=crop" alt="Product" class="saved-item-image">
+                                <div class="saved-item-info">
+                                    <div class="saved-item-name">Studio Monitor Headphones</div>
+                                    <div class="saved-item-price">$399.00</div>
+                                </div>
+                            </div>
+                            <div class="saved-item" onclick="window.location.href='product-detail.html'">
+                                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=300&h=200&fit=crop" alt="Product" class="saved-item-image">
+                                <div class="saved-item-info">
+                                    <div class="saved-item-name">Wireless Sport Earbuds</div>
+                                    <div class="saved-item-price">$179.00</div>
+                                </div>
+                            </div>
+                            <div class="saved-item" onclick="window.location.href='product-detail.html'">
+                                <img src="https://images.unsplash.com/photo-1558756520-22cfe5d382ca?w=300&h=200&fit=crop" alt="Product" class="saved-item-image">
+                                <div class="saved-item-info">
+                                    <div class="saved-item-name">Portable Bluetooth Speaker</div>
+                                    <div class="saved-item-price">$129.00</div>
+                                </div>
+                            </div>
+                            <div class="saved-item" onclick="window.location.href='product-detail.html'">
+                                <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=300&h=200&fit=crop" alt="Product" class="saved-item-image">
+                                <div class="saved-item-info">
+                                    <div class="saved-item-name">Gaming Headset RGB</div>
+                                    <div class="saved-item-price">$249.00</div>
+                                </div>
+                            </div>
+                            <div class="saved-item" onclick="window.location.href='product-detail.html'">
+                                <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=300&h=200&fit=crop" alt="Product" class="saved-item-image">
+                                <div class="saved-item-info">
+                                    <div class="saved-item-name">Professional Studio Monitors</div>
+                                    <div class="saved-item-price">$449.00</div>
+                                </div>
+                            </div>
+                            <div class="saved-item" onclick="window.location.href='product-detail.html'">
+                                <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=300&h=200&fit=crop" alt="Product" class="saved-item-image">
+                                <div class="saved-item-info">
+                                    <div class="saved-item-name">Premium In-Ear Monitors</div>
+                                    <div class="saved-item-price">$199.00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Addresses Section -->
+                <section id="addresses" class="profile-section" style="display: none;">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>Saved Addresses</h2>
+                        </div>
+                        <div class="address-grid">
+                            <div class="address-card default">
+                                <span class="default-badge">Default</span>
+                                <div class="address-type">
+                                    <span>🏠</span>
+                                    <span>Home</span>
+                                </div>
+                                <div class="address-text">
+                                    Ryman Alex<br>
+                                    123 Main Street, Apt 4B<br>
+                                    New York, NY 10001<br>
+                                    United States<br>
+                                    +1 (555) 123-4567
+                                </div>
+                                <div class="address-actions">
+                                    <span class="address-action">Edit</span>
+                                    <span class="address-action">Delete</span>
+                                </div>
+                            </div>
+                            <div class="address-card">
+                                <div class="address-type">
+                                    <span>🏢</span>
+                                    <span>Office</span>
+                                </div>
+                                <div class="address-text">
+                                    Ryman Alex<br>
+                                    456 Business Ave, Floor 12<br>
+                                    New York, NY 10018<br>
+                                    United States<br>
+                                    +1 (555) 987-6543
+                                </div>
+                                <div class="address-actions">
+                                    <span class="address-action">Edit</span>
+                                    <span class="address-action">Set as Default</span>
+                                    <span class="address-action">Delete</span>
+                                </div>
+                            </div>
+                            <div class="add-card" onclick="addAddress()">
+                                <div class="add-icon">➕</div>
+                                <div class="add-text">Add New Address</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Payment Methods Section -->
+                <section id="payments" class="profile-section" style="display: none;">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>Payment Methods</h2>
+                        </div>
+                        <div class="payment-card">
+                            <div class="payment-icon">VISA</div>
+                            <div class="payment-info">
+                                <div class="payment-type">Visa ending in 4242</div>
+                                <div class="payment-number">**** **** **** 4242</div>
+                            </div>
+                            <div class="payment-expiry">Expires 12/26</div>
+                            <span class="default-badge" style="position: static;">Default</span>
+                        </div>
+                        <div class="payment-card">
+                            <div class="payment-icon" style="background: linear-gradient(135deg, #eb001b 0%, #f79e1b 100%);">MC</div>
+                            <div class="payment-info">
+                                <div class="payment-type">Mastercard ending in 8888</div>
+                                <div class="payment-number">**** **** **** 8888</div>
+                            </div>
+                            <div class="payment-expiry">Expires 08/25</div>
+                        </div>
+                        <div class="add-card" onclick="addPaymentMethod()" style="margin-top: 20px;">
+                            <div class="add-icon">💳</div>
+                            <div class="add-text">Add New Payment Method</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings" class="profile-section" style="display: none;">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>Account Settings</h2>
+                        </div>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Email Notifications</h4>
+                                    <p>Receive order updates and promotional emails</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>SMS Notifications</h4>
+                                    <p>Receive order updates via text message</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Push Notifications</h4>
+                                    <p>Receive notifications on your device</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Two-Factor Authentication</h4>
+                                    <p>Add an extra layer of security</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Newsletter Subscription</h4>
+                                    <p>Get weekly deals and new arrivals</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>Security</h2>
+                        </div>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <button class="btn-secondary" onclick="changePassword()">Change Password</button>
+                            <button class="btn-secondary" onclick="viewLoginHistory()">View Login History</button>
+                            <button class="btn-danger" onclick="deleteAccount()">Delete Account</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Show section
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.profile-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).style.display = 'block';
+            
+            // Update active menu
+            document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('active');
+        }
+
+        // Action functions
+        function viewOrder(orderId) {
+            alert('Viewing order: ' + orderId);
+        }
+
+        function editProfile() {
+            alert('Opening profile editor...');
+        }
+
+        function addAddress() {
+            alert('Opening address form...');
+        }
+
+        function addPaymentMethod() {
+            alert('Opening payment method form...');
+        }
+
+        function changePassword() {
+            alert('Opening password change form...');
+        }
+
+        function viewLoginHistory() {
+            alert('Loading login history...');
+        }
+
+        function deleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                alert('Account deletion requested. You will receive a confirmation email.');
+            }
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to sign out?')) {
+                alert('Signing out...');
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>

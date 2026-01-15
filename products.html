@@ -276,6 +276,7 @@
             height: 5px;
             background: #e0e0e0;
             border-radius: 5px;
+            margin-top: 10px;
         }
 
         .range-progress {
@@ -283,6 +284,43 @@
             height: 100%;
             background: #00bcd4;
             border-radius: 5px;
+        }
+
+        .range-inputs {
+            position: relative;
+        }
+
+        .range-inputs input[type="range"] {
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            top: -5px;
+            background: none;
+            pointer-events: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .range-inputs input[type="range"]::-webkit-slider-thumb {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #00bcd4;
+            pointer-events: auto;
+            -webkit-appearance: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .range-inputs input[type="range"]::-moz-range-thumb {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #00bcd4;
+            pointer-events: auto;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         /* Size Filter */
@@ -549,7 +587,7 @@
                     <span>English ▾</span>
                 </div>
                 <span style="color: #666;">AR</span>
-                <div class="user-info">
+                <div class="user-info" onclick="window.location.href='profile.html'" style="cursor: pointer;">
                     <span style="font-weight: 500;">Audel Rahman</span>
                     <span>▾</span>
                 </div>
@@ -560,7 +598,7 @@
     <!-- Hero Banner -->
     <section class="hero-banner">
         <div class="hero-content">
-            <h1 class="hero-title">Simple<br>is More</h1>
+            <h1 class="hero-title">Premium<br>Audio Gear</h1>
         </div>
         <div class="scroll-indicator">
             <span>↓</span>
@@ -573,7 +611,7 @@
         <div class="breadcrumb">
             <a href="index.html" style="color: #00bcd4; text-decoration: none;">Home</a>
             <span>›</span>
-            <span>Products</span>
+            <span>Audio & Electronics</span>
         </div>
 
         <div class="content-wrapper">
@@ -596,26 +634,31 @@
                     <h4>Price <span>^</span></h4>
                     <div class="price-range">
                         <div class="price-inputs">
-                            <input type="number" class="price-input" id="minPrice" value="2000">
-                            <input type="number" class="price-input" id="maxPrice" value="300000">
+                            <input type="number" class="price-input" id="minPrice" value="0" min="0" max="500">
+                            <span style="color: #999;">to</span>
+                            <input type="number" class="price-input" id="maxPrice" value="500" min="0" max="500">
                         </div>
                         <div class="range-slider">
-                            <div class="range-progress" style="left: 0%; right: 0%;"></div>
+                            <div class="range-progress" id="rangeProgress"></div>
+                        </div>
+                        <div class="range-inputs">
+                            <input type="range" id="minRange" min="0" max="500" value="0" step="5">
+                            <input type="range" id="maxRange" min="0" max="500" value="500" step="5">
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px; color: #666;">
+                            <span>$0</span>
+                            <span>$500</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Size Filter -->
+                <!-- Category Filter -->
                 <div class="filter-section">
-                    <h4>Size <span>^</span></h4>
-                    <div class="size-grid">
-                        <div class="size-option">XXS</div>
-                        <div class="size-option">XS</div>
-                        <div class="size-option">S</div>
-                        <div class="size-option">M</div>
-                        <div class="size-option">L</div>
-                        <div class="size-option">XL</div>
-                        <div class="size-option">XXL</div>
+                    <h4>Category <span>^</span></h4>
+                    <div class="size-grid" id="categoryFilters">
+                        <div class="size-option category-option" data-category="headphones">🎧 Headphones</div>
+                        <div class="size-option category-option" data-category="earbuds">🎵 Earbuds</div>
+                        <div class="size-option category-option" data-category="speakers">🔊 Speakers</div>
                     </div>
                 </div>
 
@@ -629,7 +672,7 @@
             <!-- Products Section -->
             <section class="products-section">
                 <div class="products-header">
-                    <h2 class="results-count" id="resultsCount">64 result for clothes</h2>
+                    <h2 class="results-count" id="resultsCount">16 products for audio</h2>
                     <div class="view-sort-controls">
                         <div class="view-toggle">
                             <button class="view-btn active">⊞</button>
@@ -775,7 +818,7 @@
             `).join('');
 
             document.getElementById('productsGrid').innerHTML = productsHTML;
-            document.getElementById('resultsCount').textContent = `${filteredProducts.length} result for clothes`;
+            document.getElementById('resultsCount').textContent = `${filteredProducts.length} products for audio`;
         }
 
         // Initialize filter listeners
@@ -785,9 +828,9 @@
                 checkbox.addEventListener('change', applyFilters);
             });
 
-            // Size filters
-            document.querySelectorAll('.size-option').forEach(size => {
-                size.addEventListener('click', function() {
+            // Category filters
+            document.querySelectorAll('.category-option').forEach(category => {
+                category.addEventListener('click', function() {
                     this.classList.toggle('active');
                     applyFilters();
                 });
@@ -801,9 +844,65 @@
                 });
             });
 
-            // Price range
-            document.getElementById('minPrice').addEventListener('change', applyFilters);
-            document.getElementById('maxPrice').addEventListener('change', applyFilters);
+            // Price range inputs
+            document.getElementById('minPrice').addEventListener('input', function() {
+                let min = parseInt(this.value) || 0;
+                let max = parseInt(document.getElementById('maxPrice').value) || 500;
+                if (min > max) min = max;
+                this.value = min;
+                document.getElementById('minRange').value = min;
+                updateRangeProgress();
+                applyFilters();
+            });
+            
+            document.getElementById('maxPrice').addEventListener('input', function() {
+                let max = parseInt(this.value) || 500;
+                let min = parseInt(document.getElementById('minPrice').value) || 0;
+                if (max < min) max = min;
+                this.value = max;
+                document.getElementById('maxRange').value = max;
+                updateRangeProgress();
+                applyFilters();
+            });
+
+            // Range sliders
+            document.getElementById('minRange').addEventListener('input', function() {
+                let min = parseInt(this.value);
+                let max = parseInt(document.getElementById('maxRange').value);
+                if (min > max) {
+                    this.value = max;
+                    min = max;
+                }
+                document.getElementById('minPrice').value = min;
+                updateRangeProgress();
+                applyFilters();
+            });
+
+            document.getElementById('maxRange').addEventListener('input', function() {
+                let max = parseInt(this.value);
+                let min = parseInt(document.getElementById('minRange').value);
+                if (max < min) {
+                    this.value = min;
+                    max = min;
+                }
+                document.getElementById('maxPrice').value = max;
+                updateRangeProgress();
+                applyFilters();
+            });
+
+            // Initialize progress bar
+            updateRangeProgress();
+        }
+
+        // Update range slider progress bar
+        function updateRangeProgress() {
+            const min = parseInt(document.getElementById('minRange').value);
+            const max = parseInt(document.getElementById('maxRange').value);
+            const progress = document.getElementById('rangeProgress');
+            const left = (min / 500) * 100;
+            const right = 100 - (max / 500) * 100;
+            progress.style.left = left + '%';
+            progress.style.right = right + '%';
         }
 
         // Apply all filters
@@ -811,8 +910,8 @@
             // Get selected brands
             selectedBrands = Array.from(document.querySelectorAll('#brandFilters input:checked')).map(cb => cb.value);
             
-            // Get selected sizes
-            selectedSizes = Array.from(document.querySelectorAll('.size-option.active')).map(el => el.textContent);
+            // Get selected categories
+            const selectedCategories = Array.from(document.querySelectorAll('.category-option.active')).map(el => el.dataset.category);
             
             // Get selected colors
             selectedColors = Array.from(document.querySelectorAll('.color-option.selected')).map(el => el.dataset.color);
@@ -825,10 +924,10 @@
             filteredProducts = productsData.filter(product => {
                 const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
                 const priceMatch = product.price >= minPrice && product.price <= maxPrice;
-                const sizeMatch = selectedSizes.length === 0 || (product.sizes && product.sizes.some(s => selectedSizes.includes(s)));
+                const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(product.category);
                 const colorMatch = selectedColors.length === 0 || (product.colors && product.colors.some(c => selectedColors.includes(c)));
 
-                return brandMatch && priceMatch && sizeMatch && colorMatch;
+                return brandMatch && priceMatch && categoryMatch && colorMatch;
             });
 
             renderProducts();
